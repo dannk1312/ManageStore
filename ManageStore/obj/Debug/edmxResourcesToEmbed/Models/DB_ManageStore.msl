@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_ManageStoreModelStoreContainer" CdmEntityContainer="DB_ManageStoreEntities">
+    <EntitySetMapping Name="Bill">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="isCustomer" ColumnName="isCustomer" />
+          <ScalarProperty Name="isDone" ColumnName="isDone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillItem">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.BillItem">
+        <MappingFragment StoreEntitySet="BillItem">
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonRole">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.PersonRole">
+        <MappingFragment StoreEntitySet="PersonRole">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unit">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Bill">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_Bill">
+        <MappingFragment StoreEntitySet="vw_Bill">
+          <ScalarProperty Name="Person" ColumnName="Person" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="isCustomer" ColumnName="isCustomer" />
+          <ScalarProperty Name="isDone" ColumnName="isDone" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Category">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_Category">
+        <MappingFragment StoreEntitySet="vw_Category">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_City">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_City">
+        <MappingFragment StoreEntitySet="vw_City">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BillQuantity" ColumnName="BillQuantity" />
+          <ScalarProperty Name="PersonQuantity" ColumnName="PersonQuantity" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Item">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_Item">
+        <MappingFragment StoreEntitySet="vw_Item">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Person">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_Person">
+        <MappingFragment StoreEntitySet="vw_Person">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Unit">
+      <EntityTypeMapping TypeName="DB_ManageStoreModel.vw_Unit">
+        <MappingFragment StoreEntitySet="vw_Unit">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ItemCategory" TypeName="DB_ManageStoreModel.ItemCategory" StoreEntitySet="ItemCategory">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionName="DB_ManageStoreModel.Store.f_AnotherCategory" FunctionImportName="f_AnotherCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.f_AnotherCategory_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DB_ManageStoreModel.Store.f_BillItem" FunctionImportName="f_BillItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.f_BillItem_Result">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DB_ManageStoreModel.Store.f_ItemCategory" FunctionImportName="f_ItemCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.f_ItemCategory_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DB_ManageStoreModel.Store.f_PersonRoleTable" FunctionImportName="f_PersonRoleTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.f_PersonRoleTable_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_ManageStoreModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_ManageStoreModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteCategory" FunctionName="DB_ManageStoreModel.Store.sp_DeleteCategory" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteCity" FunctionName="DB_ManageStoreModel.Store.sp_DeleteCity" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteUnit" FunctionName="DB_ManageStoreModel.Store.sp_DeleteUnit" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_ManageStoreModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_ManageStoreModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_ManageStoreModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_ManageStoreModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_InsertBill" FunctionName="DB_ManageStoreModel.Store.sp_InsertBill" />
+    <FunctionImportMapping FunctionImportName="sp_InsertCategory" FunctionName="DB_ManageStoreModel.Store.sp_InsertCategory" />
+    <FunctionImportMapping FunctionImportName="sp_InsertCity" FunctionName="DB_ManageStoreModel.Store.sp_InsertCity" />
+    <FunctionImportMapping FunctionImportName="sp_InsertItem" FunctionName="DB_ManageStoreModel.Store.sp_InsertItem" />
+    <FunctionImportMapping FunctionImportName="sp_InsertPerson" FunctionName="DB_ManageStoreModel.Store.sp_InsertPerson" />
+    <FunctionImportMapping FunctionImportName="sp_InsertUnit" FunctionName="DB_ManageStoreModel.Store.sp_InsertUnit" />
+    <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="DB_ManageStoreModel.Store.sp_Login" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_ManageStoreModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateBill" FunctionName="DB_ManageStoreModel.Store.sp_UpdateBill" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateCategory" FunctionName="DB_ManageStoreModel.Store.sp_UpdateCategory" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateCity" FunctionName="DB_ManageStoreModel.Store.sp_UpdateCity" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateItem" FunctionName="DB_ManageStoreModel.Store.sp_UpdateItem" />
+    <FunctionImportMapping FunctionImportName="sp_UpdatePerson" FunctionName="DB_ManageStoreModel.Store.sp_UpdatePerson" />
+    <FunctionImportMapping FunctionImportName="sp_UpdatePersonInfor" FunctionName="DB_ManageStoreModel.Store.sp_UpdatePersonInfor" />
+    <FunctionImportMapping FunctionImportName="sp_UpdatePersonPassword" FunctionName="DB_ManageStoreModel.Store.sp_UpdatePersonPassword" />
+    <FunctionImportMapping FunctionImportName="sp_UpdatePersonRole" FunctionName="DB_ManageStoreModel.Store.sp_UpdatePersonRole" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateUnit" FunctionName="DB_ManageStoreModel.Store.sp_UpdateUnit" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_ManageStoreModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_AddToBag" FunctionName="DB_ManageStoreModel.Store.sp_AddToBag" />
+    <FunctionImportMapping FunctionImportName="f_Bag" FunctionName="DB_ManageStoreModel.Store.f_Bag" />
+    <FunctionImportMapping FunctionImportName="sp_CreateBag" FunctionName="DB_ManageStoreModel.Store.sp_CreateBag" />
+  </EntityContainerMapping>
+</Mapping>

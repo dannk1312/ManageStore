@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_ManageStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="f_AnotherCategory_Result">
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="f_BillItem_Result">
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="f_ItemCategory_Result">
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="f_PersonRoleTable_Result">
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="BillId" />
+    </Key>
+    <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isCustomer" Type="Boolean" Nullable="false" />
+    <Property Name="isDone" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Bill_City" FromRole="Bill" ToRole="City" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Bill_Person" FromRole="Bill" ToRole="Person" />
+    <NavigationProperty Name="BillItem" Relationship="Self.FK_BillItem_Bill" FromRole="Bill" ToRole="BillItem" />
+  </EntityType>
+  <EntityType Name="BillItem">
+    <Key>
+      <PropertyRef Name="BillId" />
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="BillId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK_BillItem_Bill" FromRole="BillItem" ToRole="Bill" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_BillItem_Item" FromRole="BillItem" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.ItemCategory" FromRole="Category" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_City" FromRole="City" ToRole="Bill" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Person_City" FromRole="City" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BillItem" Relationship="Self.FK_BillItem_Item" FromRole="Item" ToRole="BillItem" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Item_Unit" FromRole="Item" ToRole="Unit" />
+    <NavigationProperty Name="Category" Relationship="Self.ItemCategory" FromRole="Item" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Person" FromRole="Person" ToRole="Bill" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Person_City" FromRole="Person" ToRole="City" />
+    <NavigationProperty Name="PersonRole" Relationship="Self.FK_Person_AccountRole" FromRole="Person" ToRole="PersonRole" />
+  </EntityType>
+  <EntityType Name="PersonRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Person_AccountRole" FromRole="PersonRole" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Item_Unit" FromRole="Unit" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="vw_Bill">
+    <Key>
+      <PropertyRef Name="Person" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="TotalPrice" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="isCustomer" />
+      <PropertyRef Name="isDone" />
+      <PropertyRef Name="PersonId" />
+      <PropertyRef Name="BillId" />
+    </Key>
+    <Property Name="Person" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isCustomer" Type="Boolean" Nullable="false" />
+    <Property Name="isDone" Type="Boolean" Nullable="false" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="BillId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_Category">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemQuantity" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_City">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillQuantity" Type="Int32" />
+    <Property Name="PersonQuantity" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_Item">
+    <Key>
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="Enable" />
+      <PropertyRef Name="ItemId" />
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_Person">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_Unit">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemQuantity" Type="Int32" />
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bill_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bill_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillItem_Bill">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="BillItem" Type="Self.BillItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="BillId" />
+      </Principal>
+      <Dependent Role="BillItem">
+        <PropertyRef Name="BillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillItem_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="BillItem" Type="Self.BillItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="BillItem">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Person_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="UnitId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Person_AccountRole">
+    <End Role="PersonRole" Type="Self.PersonRole" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemCategory">
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DB_ManageStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bill" EntityType="Self.Bill" />
+    <EntitySet Name="BillItem" EntityType="Self.BillItem" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="PersonRole" EntityType="Self.PersonRole" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
+    <EntitySet Name="vw_Bill" EntityType="Self.vw_Bill" />
+    <EntitySet Name="vw_Category" EntityType="Self.vw_Category" />
+    <EntitySet Name="vw_City" EntityType="Self.vw_City" />
+    <EntitySet Name="vw_Item" EntityType="Self.vw_Item" />
+    <EntitySet Name="vw_Person" EntityType="Self.vw_Person" />
+    <EntitySet Name="vw_Unit" EntityType="Self.vw_Unit" />
+    <AssociationSet Name="FK_Bill_City" Association="Self.FK_Bill_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bill_Person" Association="Self.FK_Bill_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillItem_Bill" Association="Self.FK_BillItem_Bill">
+      <End Role="Bill" EntitySet="Bill" />
+      <End Role="BillItem" EntitySet="BillItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillItem_Item" Association="Self.FK_BillItem_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="BillItem" EntitySet="BillItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Person_City" Association="Self.FK_Person_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Unit" Association="Self.FK_Item_Unit">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Person_AccountRole" Association="Self.FK_Person_AccountRole">
+      <End Role="PersonRole" EntitySet="PersonRole" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="ItemCategory" Association="Self.ItemCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <FunctionImport Name="f_AnotherCategory" IsComposable="true" ReturnType="Collection(DB_ManageStoreModel.f_AnotherCategory_Result)">
+      <Parameter Name="ItemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_BillItem" IsComposable="true" ReturnType="Collection(DB_ManageStoreModel.f_BillItem_Result)">
+      <Parameter Name="BillId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_ItemCategory" IsComposable="true" ReturnType="Collection(DB_ManageStoreModel.f_ItemCategory_Result)">
+      <Parameter Name="ItemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_PersonRoleTable" IsComposable="true" ReturnType="Collection(DB_ManageStoreModel.f_PersonRoleTable_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteCategory">
+      <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteCity">
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteUnit">
+      <Parameter Name="UnitId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_ManageStoreModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_ManageStoreModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertBill">
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="TotalPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="IsCustomer" Mode="In" Type="Boolean" />
+      <Parameter Name="IsDone" Mode="In" Type="Boolean" />
+      <Parameter Name="AllBillItemData" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertCategory">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertCity">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertItem">
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+      <Parameter Name="UnitId" Mode="In" Type="Int32" />
+      <Parameter Name="AllCategory" Mode="In" Type="String" />
+      <Parameter Name="Enable" Mode="In" Type="Boolean" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertPerson">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="RoleId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertUnit">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Login" ReturnType="Collection(Int32)">
+      <Parameter Name="POE" Mode="In" Type="String" />
+      <Parameter Name="Pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateBill">
+      <Parameter Name="BillId" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="TotalPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="IsCustomer" Mode="In" Type="Boolean" />
+      <Parameter Name="IsDone" Mode="In" Type="Boolean" />
+      <Parameter Name="AllBillItemData" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateCategory">
+      <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateCity">
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateItem">
+      <Parameter Name="ItemId" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Decimal" />
+      <Parameter Name="UnitId" Mode="In" Type="Int32" />
+      <Parameter Name="AllCategory" Mode="In" Type="String" />
+      <Parameter Name="Enable" Mode="In" Type="Boolean" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdatePerson">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="RoleId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdatePersonInfor">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdatePersonPassword">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdatePersonRole">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="RoleId" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateUnit">
+      <Parameter Name="UnitId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="sp_AddToBag" ReturnType="Collection(Int32)">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+      <Parameter Name="ItemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="f_Bag" IsComposable="true" EntitySet="Bill" ReturnType="Collection(DB_ManageStoreModel.Bill)">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CreateBag" ReturnType="Collection(Int32)">
+      <Parameter Name="PersonId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="f_Bag_Result">
+    <Property Type="Int32" Name="BillId" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="PersonId" Nullable="false" />
+    <Property Type="Decimal" Name="TotalPrice" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="CityId" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="Boolean" Name="isCustomer" Nullable="false" />
+    <Property Type="Boolean" Name="isDone" Nullable="false" />
+  </ComplexType>
+</Schema>
