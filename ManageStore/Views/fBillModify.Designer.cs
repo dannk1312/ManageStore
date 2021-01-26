@@ -31,13 +31,7 @@ namespace ManageStore.Views
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAddBillItem = new System.Windows.Forms.Button();
-            this.lbItem = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtItem = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ckbDone = new System.Windows.Forms.CheckBox();
             this.ckbIsCustomer = new System.Windows.Forms.CheckBox();
@@ -56,11 +50,19 @@ namespace ManageStore.Views
             this.btnReset = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddBillItem = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtItem = new System.Windows.Forms.TextBox();
+            this.lbItem = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,13 +80,9 @@ namespace ManageStore.Views
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnAddBillItem);
             this.groupBox2.Controls.Add(this.lbItem);
+            this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtQuantity);
-            this.groupBox2.Controls.Add(this.txtItem);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(242, 18);
             this.groupBox2.Name = "groupBox2";
@@ -92,27 +90,6 @@ namespace ManageStore.Views
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List Item";
-            // 
-            // btnAddBillItem
-            // 
-            this.btnAddBillItem.Location = new System.Drawing.Point(281, 42);
-            this.btnAddBillItem.Name = "btnAddBillItem";
-            this.btnAddBillItem.Size = new System.Drawing.Size(49, 22);
-            this.btnAddBillItem.TabIndex = 11;
-            this.btnAddBillItem.Text = "+";
-            this.btnAddBillItem.UseVisualStyleBackColor = true;
-            this.btnAddBillItem.Click += new System.EventHandler(this.btnAddBillItem_Click);
-            // 
-            // lbItem
-            // 
-            this.lbItem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbItem.FormattingEnabled = true;
-            this.lbItem.ItemHeight = 16;
-            this.lbItem.Location = new System.Drawing.Point(3, 66);
-            this.lbItem.Name = "lbItem";
-            this.lbItem.Size = new System.Drawing.Size(330, 228);
-            this.lbItem.TabIndex = 10;
-            this.lbItem.SelectedIndexChanged += new System.EventHandler(this.lbItem_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -123,40 +100,6 @@ namespace ManageStore.Views
             this.label7.TabIndex = 9;
             this.label7.Text = "Click to Pop";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(196, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Quantity:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Item: (ID:Name(Quantity))";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(199, 42);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(76, 22);
-            this.txtQuantity.TabIndex = 1;
-            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
-            // 
-            // txtItem
-            // 
-            this.txtItem.Location = new System.Drawing.Point(3, 42);
-            this.txtItem.Name = "txtItem";
-            this.txtItem.Size = new System.Drawing.Size(193, 22);
-            this.txtItem.TabIndex = 0;
-            this.txtItem.Click += new System.EventHandler(this.txtItem_Click);
             // 
             // groupBox5
             // 
@@ -340,6 +283,74 @@ namespace ManageStore.Views
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnAddBillItem);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtQuantity);
+            this.panel2.Controls.Add(this.txtItem);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 18);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(330, 57);
+            this.panel2.TabIndex = 11;
+            // 
+            // btnAddBillItem
+            // 
+            this.btnAddBillItem.Location = new System.Drawing.Point(282, 29);
+            this.btnAddBillItem.Name = "btnAddBillItem";
+            this.btnAddBillItem.Size = new System.Drawing.Size(49, 22);
+            this.btnAddBillItem.TabIndex = 16;
+            this.btnAddBillItem.Text = "+";
+            this.btnAddBillItem.UseVisualStyleBackColor = true;
+            this.btnAddBillItem.Click += new System.EventHandler(this.btnAddBillItem_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(197, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Quantity:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(169, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Item: (ID:Name(Quantity))";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(200, 29);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(76, 22);
+            this.txtQuantity.TabIndex = 13;
+            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
+            // 
+            // txtItem
+            // 
+            this.txtItem.Location = new System.Drawing.Point(4, 29);
+            this.txtItem.Name = "txtItem";
+            this.txtItem.Size = new System.Drawing.Size(193, 22);
+            this.txtItem.TabIndex = 12;
+            this.txtItem.Click += new System.EventHandler(this.txtItem_Click);
+            // 
+            // lbItem
+            // 
+            this.lbItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbItem.FormattingEnabled = true;
+            this.lbItem.ItemHeight = 16;
+            this.lbItem.Location = new System.Drawing.Point(3, 75);
+            this.lbItem.Name = "lbItem";
+            this.lbItem.Size = new System.Drawing.Size(330, 219);
+            this.lbItem.TabIndex = 12;
+            this.lbItem.SelectedIndexChanged += new System.EventHandler(this.lbItem_SelectedIndexChanged);
+            // 
             // fBillModify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -347,15 +358,17 @@ namespace ManageStore.Views
             this.ClientSize = new System.Drawing.Size(581, 395);
             this.Controls.Add(this.groupBox1);
             this.Name = "fBillModify";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BillModify";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -369,10 +382,6 @@ namespace ManageStore.Views
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox ckbDone;
         private System.Windows.Forms.CheckBox ckbIsCustomer;
@@ -388,6 +397,11 @@ namespace ManageStore.Views
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox lbItem;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnAddBillItem;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtItem;
     }
 }

@@ -38,12 +38,12 @@ namespace ManageStore.Views
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbMessage = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.lbId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvView)).BeginInit();
             this.panel3.SuspendLayout();
@@ -156,6 +156,17 @@ namespace ManageStore.Views
             this.panel1.Size = new System.Drawing.Size(677, 28);
             this.panel1.TabIndex = 13;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSelect.Location = new System.Drawing.Point(461, 0);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(72, 28);
+            this.btnSelect.TabIndex = 14;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // lbId
             // 
             this.lbId.Dock = System.Windows.Forms.DockStyle.Left;
@@ -209,17 +220,6 @@ namespace ManageStore.Views
             this.txtName.TabIndex = 8;
             this.txtName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtName_MouseClick);
             // 
-            // btnSelect
-            // 
-            this.btnSelect.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSelect.Location = new System.Drawing.Point(461, 0);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(72, 28);
-            this.btnSelect.TabIndex = 14;
-            this.btnSelect.Text = "Select";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // fPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,6 +227,7 @@ namespace ManageStore.Views
             this.ClientSize = new System.Drawing.Size(683, 486);
             this.Controls.Add(this.groupBox1);
             this.Name = "fPerson";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Person";
             this.Load += new System.EventHandler(this.fPerson_Load);
             this.groupBox1.ResumeLayout(false);

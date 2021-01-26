@@ -15,6 +15,7 @@ namespace ManageStore.Views
     public partial class fMain : Form
     {
         private vw_Person Account;
+        private Form childForm;
         public fMain()
         {
             InitializeComponent();
@@ -55,10 +56,7 @@ namespace ManageStore.Views
         private void personsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataProvider.ReloadData();
-            using (var f = new fPerson())
-            {
-                f.ShowDialog();
-            }
+            ShowNewForm(new fPerson());
         }
 
         private void Reload()
@@ -123,19 +121,13 @@ namespace ManageStore.Views
         private void billsTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataProvider.ReloadData();
-            using (var f = new fBill())
-            {
-                f.ShowDialog();
-            }
+            ShowNewForm(new fBill());
         }
 
         private void itemsTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataProvider.ReloadData();
-            using (var f = new fItem())
-            {
-                f.ShowDialog();
-            }
+            ShowNewForm(new fItem());
         }
 
         private void btnItemView_Click(object sender, EventArgs e)
@@ -192,10 +184,8 @@ namespace ManageStore.Views
 
         private void storeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var f = new fItem(input:Account))
-            {
-                f.ShowDialog();
-            }
+            DataProvider.ReloadData();
+            ShowNewForm(new fItem(input: Account));
         }
 
         private void bagToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -210,10 +200,34 @@ namespace ManageStore.Views
             }
             BillId = temp.BillId;
             vw_Bill userBag = DataProvider.DB.vw_Bill.Where(x => x.BillId == BillId).FirstOrDefault();
-            using (var f = new fBillModify(userBag, person: Account))
+            ShowNewForm(new fBillModify(userBag, person: Account));
+        }
+
+        private void ShowNewForm(Form input)
+        {
+            if (childForm != null)
             {
-                f.ShowDialog();
+                childForm.Close();
+                childForm.Dispose();
+                childForm = null;
             }
+
+      
+            childForm = input;
+            childForm.TopLevel = false;
+            childForm.Visible = true;
+            childForm.Dock = DockStyle.Fill;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            toolStripContainer1.ContentPanel.Controls.Add(childForm);
+
+            pnHome.Visible = false;
+            homeToolStripMenuItem.Visible = true;
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnHome.Visible = true;
+            homeToolStripMenuItem.Visible = false;
         }
     }
 }

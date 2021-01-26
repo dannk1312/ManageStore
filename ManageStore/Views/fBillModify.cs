@@ -29,6 +29,7 @@ namespace ManageStore.Views
             {
                 ckbIsCustomer.Visible = false;
                 txtPrice.ReadOnly = true;
+                txtPerson.Click -= txtCity_Click;
             }    
         }
 

@@ -214,6 +214,7 @@ namespace ManageStore.Views
             this.ClientSize = new System.Drawing.Size(683, 486);
             this.Controls.Add(this.groupBox1);
             this.Name = "fBill";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bill";
             this.Load += new System.EventHandler(this.fBill_Load);
             this.groupBox1.ResumeLayout(false);

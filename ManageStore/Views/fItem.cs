@@ -27,8 +27,11 @@ namespace ManageStore.Views
             InitializeComponent();
             btnSelect.Visible = select;
             member = input;
-            btnAdd.Visible = btnEdit.Visible = (member == null);
-            txtName.MouseClick -= txtName_MouseClick;
+            if (member != null)
+            {
+                btnAdd.Visible = btnEdit.Visible = false;
+                txtName.MouseClick -= txtName_MouseClick;
+            }
             isBuying = member != null;
         }
 
