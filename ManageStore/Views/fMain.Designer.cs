@@ -102,7 +102,7 @@ namespace ManageStore.Views
             // 
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.Color.White;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnHome);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(959, 584);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(959, 580);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -128,7 +128,7 @@ namespace ManageStore.Views
             this.cityTableToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(959, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(959, 30);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -263,7 +263,7 @@ namespace ManageStore.Views
             this.pnHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnHome.Location = new System.Drawing.Point(0, 0);
             this.pnHome.Name = "pnHome";
-            this.pnHome.Size = new System.Drawing.Size(959, 584);
+            this.pnHome.Size = new System.Drawing.Size(959, 580);
             this.pnHome.TabIndex = 2;
             // 
             // pnInformation
@@ -273,7 +273,7 @@ namespace ManageStore.Views
             this.pnInformation.Controls.Add(this.panel3);
             this.pnInformation.Controls.Add(this.panel2);
             this.pnInformation.Controls.Add(this.pnItem);
-            this.pnInformation.Location = new System.Drawing.Point(215, 200);
+            this.pnInformation.Location = new System.Drawing.Point(215, 198);
             this.pnInformation.Name = "pnInformation";
             this.pnInformation.Size = new System.Drawing.Size(540, 280);
             this.pnInformation.TabIndex = 3;
@@ -567,7 +567,7 @@ namespace ManageStore.Views
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(197, 113);
+            this.label1.Location = new System.Drawing.Point(197, 111);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(588, 69);
             this.label1.TabIndex = 2;
