@@ -336,6 +336,7 @@ namespace ManageStore.Views
             // 
             this.txtItem.Location = new System.Drawing.Point(4, 29);
             this.txtItem.Name = "txtItem";
+            this.txtItem.ReadOnly = true;
             this.txtItem.Size = new System.Drawing.Size(193, 22);
             this.txtItem.TabIndex = 12;
             this.txtItem.Click += new System.EventHandler(this.txtItem_Click);

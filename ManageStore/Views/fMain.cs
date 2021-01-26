@@ -208,8 +208,7 @@ namespace ManageStore.Views
             if (childForm != null)
             {
                 childForm.Close();
-                childForm.Dispose();
-                childForm = null;
+                childForm.FormClosed += ChildForm_FormClosed;
             }
 
       
@@ -222,6 +221,13 @@ namespace ManageStore.Views
 
             pnHome.Visible = false;
             homeToolStripMenuItem.Visible = true;
+        }
+
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            homeToolStripMenuItem_Click(sender, new EventArgs());
+            childForm.Dispose();
+            childForm = null;
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)

@@ -65,8 +65,6 @@ namespace ManageStore.Views
                 if (mess.Value.ToString().Contains("[S]"))
                 {
                     MessageBox.Show(mess.Value.ToString() + (Bill.isDone?", đơn hàng sẽ chuyển tới trong thời gian gần nhất ....":""));
-                    if (!Bill.isDone)
-                        return;
                 }
                 else
                 {

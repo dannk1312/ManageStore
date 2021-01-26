@@ -187,7 +187,7 @@ namespace ManageStore.Views
             this.homeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(959, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(959, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -359,6 +359,7 @@ namespace ManageStore.Views
             this.btnPersonView.TabIndex = 4;
             this.btnPersonView.Text = "View";
             this.btnPersonView.UseVisualStyleBackColor = false;
+            this.btnPersonView.Click += new System.EventHandler(this.btnPersonView_Click);
             // 
             // lbMember
             // 
@@ -442,6 +443,7 @@ namespace ManageStore.Views
             this.btnBillView.TabIndex = 3;
             this.btnBillView.Text = "View";
             this.btnBillView.UseVisualStyleBackColor = false;
+            this.btnBillView.Click += new System.EventHandler(this.btnBillView_Click);
             // 
             // lbEarnBill
             // 
@@ -498,6 +500,7 @@ namespace ManageStore.Views
             this.btnItemView.TabIndex = 2;
             this.btnItemView.Text = "View";
             this.btnItemView.UseVisualStyleBackColor = false;
+            this.btnItemView.Click += new System.EventHandler(this.btnItemView_Click);
             // 
             // label17
             // 
